@@ -19,6 +19,9 @@ def validate_phone_number(cls, p):
         raise ValueError(f"Invalid phone number format {p}. Use +7 XXX XXX XX XX")
     return p
 
+
+
+
 class Config:
     arbitrary_types_allowed = True
 
