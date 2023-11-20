@@ -34,13 +34,14 @@ fields_types = {
 }
 
 
-for field in fields_types:
-    fields_table.insert({"field name": field, "field type": fields_types[field]})
+# for field in fields_types:
+#     fields_table.insert({"field name": field, "field type": fields_types[field]})
 
 for form in forms:
     forms_table.insert(form)
 
+def find_forms_by_fields(*args):
+    q = forms_table.search(Query().form_fields.test(lambda x: set(args).issubset(set(x))))
+    return q
 
-q = forms_table.search(Query().form_name == "Client")[0]
-form_fields = q["form_fields"]
 

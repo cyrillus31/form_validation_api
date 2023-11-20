@@ -5,8 +5,9 @@ from pydantic import BaseModel, EmailStr, validator
 
 
 class BaseForm(BaseModel):
-    date: str
-    phone: str
+    date: str | None
+    phone: str | None
+    email: EmailStr | None
 
     DateValueError = ValueError("Invalid date format. Use DD.MM.YYYY or YYYY-MM-DD")
 
