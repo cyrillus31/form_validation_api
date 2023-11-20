@@ -9,11 +9,11 @@ database_exists = os.path.exists(os.path.join(cwd, "database", 'db.json'))
 if not database_exists:
     db = TinyDB(os.path.join(cwd, "database", 'db.json'))
     db.insert({
-        "New_client_form": "Form_template_name",
-        "Clients name": "text",
-        "Clients phone": "phone",
-        "Clients email": "email",
-        "Date registered": "date",
+        "new_client_form": "Form_template_name",
+        "clients name": "text",
+        "clients phone": "phone",
+        "clients email": "email",
+        "date registered": "date",
          })
 
 
