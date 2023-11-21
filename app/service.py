@@ -15,7 +15,8 @@ form_that_fits_with_types = add_types(form_that_fits)
 
 print(form_that_fits_with_types)
 
-result = form_fits(test_recieved_form, form_that_fits_with_types)
+form_name = form_fits(test_recieved_form, form_that_fits_with_types)
 
 
-print(result)
+
+print(form_name)

@@ -2,11 +2,13 @@ from datetime import datetime
 import re
 
 from pydantic import EmailStr, ValidationError
+
 from database.db import find_forms_by_fields, add_types, fields_types
+from errors import CustomValidationError
 
 
 def validate_date(d: str) -> str:
-    DateValidationError = ValidationError(
+    DateValidationError = CustomValidationError(
         "Invalid date format. Use DD.MM.YYYY or YYYY-MM-DD"
     )
     try:
@@ -22,7 +24,7 @@ def validate_date(d: str) -> str:
 def validate_phone_number(p: str) -> str:
     pattern = r"\+7\s\d{3}\s\d{3}\s\d{2}\s\d{2}"
     if not re.match(pattern, p):
-        raise ValidationError(f"Invalid phone number format {p}. Use +7 XXX XXX XX XX")
+        raise CustomValidationError(f"Invalid phone number format {p}. Use +7 XXX XXX XX XX")
     return "phone"
 
 
@@ -31,7 +33,7 @@ def validate_email(email: str) -> str:
         EmailStr._validate(email)
         return email
     except ValueError:
-        raise ValidationError("Invalid Email.")
+        raise CustomValidationError("Invalid Email.")
 
 
 def validate_text(text: str) -> str:
@@ -39,7 +41,7 @@ def validate_text(text: str) -> str:
         str(text)
         return text
     except ValueError:
-        raise ValidationError("Invalid text.")
+        raise CustomValidationError("Invalid text.")
 
 validator_types = {
         "date": validate_date,
@@ -58,7 +60,7 @@ def validator(data_to_validate: str, validation_type: str = None, _validation_or
         try:
             val_func(data_to_validate)
             return val_type
-        except ValidationError:
+        except CustomValidationError:
             continue
     return False 
 
@@ -70,7 +72,7 @@ def form_fits(recieved_form: dict, form_to_validate_by: dict) -> str:
     for field in form_to_validate_by["form_fields"]:
         type_to_validate = form_to_validate_by["form_fields"][field]
         valid = validator(recieved_form[field], type_to_validate)
-        form_fits_result *= valid
+        form_fits_result *= bool(valid)
 
     if form_fits_result:
         return form_to_validate_by["form_name"]
