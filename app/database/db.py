@@ -41,8 +41,20 @@ fields_types = {
 for form in forms:
     forms_table.insert(form)
 
-def find_forms_by_fields(*args):
+
+def find_forms_by_fields(*args) -> list:
     q = forms_table.search(Query().form_fields.test(lambda x: set(args).issubset(set(x))))
     return q
 
+def add_types(form: dict) -> dict:
+    updated_form = {"form_name": form["form_name"], "form_fields": {}}
+    for field in form["form_fields"]:
+        updated_form["form_fields"][field] = fields_types[field] 
+    return updated_form
+
+# q = find_forms_by_fields("name")[0]
+# print(q)
+# q = add_types(q)
+# print(q)
+        
 
