@@ -25,9 +25,10 @@ def validate_phone_number(p: str) -> str:
         raise ValidationError(f"Invalid phone number format {p}. Use +7 XXX XXX XX XX")
     return "phone"
 
+
 def validate_email(email: str) -> str: 
     try:
-        EmailStr.validate(email)
+        EmailStr._validate(email)
         return email
     except ValueError:
         raise ValidationError("Invalid Email.")
@@ -41,11 +42,12 @@ def validate_text(text: str) -> str:
         raise ValidationError("Invalid text.")
 
 validator_types = {
-        "data": validate_date,
+        "date": validate_date,
         "phone": validate_phone_number,
         "email": validate_email,
         "text": validate_text
         }
+
 
 def validator(data_to_validate: str, validation_type: str = None, _validation_order: list[str] = validator_types.keys()) -> str | bool:
     if validation_type:
@@ -61,16 +63,16 @@ def validator(data_to_validate: str, validation_type: str = None, _validation_or
     return False 
 
 
+def form_fits(recieved_form: dict, form_to_validate_by: dict) -> str:
+    """Returns a form name if it fits"""
 
-def form_fits(recieved_form: dict, form_to_validate_by: dict):
-    forms_fit = True 
-    for field in form_to_validate_by:
-        t = form_to_validate_by[field]
+    form_fits_result = True 
+    for field in form_to_validate_by["form_fields"]:
+        type_to_validate = form_to_validate_by["form_fields"][field]
+        valid = validator(recieved_form[field], type_to_validate)
+        form_fits_result *= valid
 
-
-    if ... :
-
+    if form_fits_result:
         return form_to_validate_by["form_name"]
     else:
         return False
-
