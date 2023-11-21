@@ -24,11 +24,13 @@ def validate_date(d: str) -> str:
 def validate_phone_number(p: str) -> str:
     pattern = r"\+7\s\d{3}\s\d{3}\s\d{2}\s\d{2}"
     if not re.match(pattern, p):
-        raise CustomValidationError(f"Invalid phone number format {p}. Use +7 XXX XXX XX XX")
+        raise CustomValidationError(
+            f"Invalid phone number format {p}. Use +7 XXX XXX XX XX"
+        )
     return "phone"
 
 
-def validate_email(email: str) -> str: 
+def validate_email(email: str) -> str:
     try:
         EmailStr._validate(email)
         return email
@@ -43,15 +45,20 @@ def validate_text(text: str) -> str:
     except ValueError:
         raise CustomValidationError("Invalid text.")
 
+
 validator_types = {
-        "date": validate_date,
-        "phone": validate_phone_number,
-        "email": validate_email,
-        "text": validate_text
-        }
+    "date": validate_date,
+    "phone": validate_phone_number,
+    "email": validate_email,
+    "text": validate_text,
+}
 
 
-def validator(data_to_validate: str, validation_type: str = None, _validation_order: list[str] = validator_types.keys()) -> str | bool:
+def validator(
+    data_to_validate: str,
+    validation_type: str = None,
+    _validation_order: list[str] = validator_types.keys(),
+) -> str | bool:
     if validation_type:
         _validation_order = [validation_type]
 
@@ -62,13 +69,13 @@ def validator(data_to_validate: str, validation_type: str = None, _validation_or
             return val_type
         except CustomValidationError:
             continue
-    return False 
+    return False
 
 
 def form_fits(recieved_form: dict, form_to_validate_by: dict) -> str:
     """Returns a form name if it fits"""
 
-    form_fits_result = True 
+    form_fits_result = True
     for field in form_to_validate_by["form_fields"]:
         type_to_validate = form_to_validate_by["form_fields"][field]
         valid = validator(recieved_form[field], type_to_validate)
@@ -78,6 +85,7 @@ def form_fits(recieved_form: dict, form_to_validate_by: dict) -> str:
         return form_to_validate_by["form_name"]
     else:
         return False
+
 
 def find_types(recieved_form: dict) -> dict:
     """Returns field names with probable types"""

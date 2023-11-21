@@ -2,7 +2,7 @@ from typing import Optional
 
 from fastapi import FastAPI, Request, Form
 
-from models import NewForm 
+from services import evaluate_form
 
 app = FastAPI()
 
@@ -23,8 +23,6 @@ def index():
 
 @app.post("/get_form")
 async def get_form(request: Request):
-
     data = await request.form()
-
-    # NewForm(**form_data)
-    return {"data": dict(data)}
+    response = evaluate_form(dict(data))
+    return response

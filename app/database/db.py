@@ -42,7 +42,7 @@ for form in forms:
     forms_table.insert(form)
 
 
-def find_forms_by_fields(*args) -> list:
+def find_forms_by_fields(*args) -> list[dict]:
     q = forms_table.search(Query().form_fields.test(lambda x: set(args).issubset(set(x))))
     return q
 
