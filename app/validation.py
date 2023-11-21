@@ -72,7 +72,7 @@ def validator(
     return False
 
 
-def form_fits(recieved_form: dict, form_to_validate_by: dict) -> str:
+def form_fits(recieved_form: dict, form_to_validate_by: dict) -> str | bool:
     """Returns a form name if it fits"""
 
     form_fits_result = True
@@ -89,6 +89,7 @@ def form_fits(recieved_form: dict, form_to_validate_by: dict) -> str:
 
 def find_types(recieved_form: dict) -> dict:
     """Returns field names with probable types"""
+
     result = {}
     for field in recieved_form:
         field_content = recieved_form[field]
