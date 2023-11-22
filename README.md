@@ -65,10 +65,10 @@ uvicorn main:app
 ```
 После этого сервер развернется на localhost:8000.
 
-Запустить скрипт, который будет отправлять тестовые POST запросы на localhost или на сервер: 
+Запустить скрипт из корня репозитория, который будет отправлять тестовые POST запросы на localhost или на сервер [http://form-validation-api.fvds.ru/get\_form](http://form-validation-api.fvds.ru/get_form): 
 
 ```console
-python ../tests/test_script.py
+python tests/test_script.py
 ```
 
 ## Запуск на сервере

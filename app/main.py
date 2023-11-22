@@ -1,25 +1,26 @@
 from typing import Optional
+import json
+import os
 
 from fastapi import FastAPI, Request, Form
 
 from services import evaluate_form
+from database.db import db_path
 
 app = FastAPI()
 
 
 @app.get("/")
 def index():
-    return "<h1>Welcome</h1>"
+    return {"message": "Welcome! This is the page of a project by Kirill Fedtsov (kirill.olegovich31@gmail.com). Use the following endpoint: /get_form"}
 
 
-# @app.post("/get_form")
-# def get_form(request: Request):
-#     query_params = request.query_params
-#     params = dict()
-#     for param in query_params:
-#         params[param] = query_params[param]
-#     NewForm(**params)
-#     return "Who wants what?"
+@app.get("/get_form")
+async def get_form():
+    with open(db_path) as json_file:
+        json_data = json.load(json_file)
+    return {"message": "POST the form fields to the endpoint", "known forms": json_data}
+    
 
 @app.post("/get_form")
 async def get_form(request: Request):
