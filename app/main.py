@@ -16,7 +16,7 @@ def index():
 
 
 @app.get("/get_form")
-async def get_form():
+async def get_information():
     with open(db_path) as json_file:
         json_data = json.load(json_file)
     return {"message": "POST the form fields to the endpoint", "known forms": json_data}
