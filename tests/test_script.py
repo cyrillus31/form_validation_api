@@ -35,21 +35,21 @@ test_data = [
     },
     {
         "seller name": "Microsoft",
-        "contanct number": "+7 916 619 69 96",
+        "phone number": "+7 916 619 69 96",
         "founder": "Bill Gates",
     },
     # Invalid forms
     {"company": "Yandex", "country of origin": "Russia", "founded": "1997-09-23"},
     {
-        "client name": "Kirill",
-        "client email": "kirill.olegovich31@gmail.com",
-        "phone number": "+7 123 456 78 91",
-        "date registered": "19.04.2023",
-        "sports": "bjj",
-        "order description": "Macitosh",
+        "courier name": "Grigory",
+        "courier email": "Grigory.olegovich31@gmail.com",
+        "phone number": "+9123456",
+        "date registered": "04.19.2023",
+        "sports": "2023-11-22",
+        "model description": "Lisa",
         "date created": "1984-01-24",
-        "customer email": "steve.jobs@apple.com",
-        "motto": "Think different",
+        "customer email": "steve.wozniak@apple.com",
+        "motto": "If I had asked my customers what they wanted they would have said a faster horse.",
     },
 ]
 

@@ -13,13 +13,12 @@ database_exists = os.path.exists(db_path)
 
 db = TinyDB(db_path)
 
+forms_table = db.table("forms")
+fields_table = db.table("fields")
+
 if not database_exists:
-    forms_table = db.table("forms")
-    fields_table = db.table("fields")
-
-
-for form in forms:
-    forms_table.insert(form)
+    for form in forms:
+        forms_table.insert(form)
 
 
 def find_forms_by_fields(*args) -> list[Document]:
