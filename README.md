@@ -78,7 +78,7 @@ python ../tests/test_script.py
 Создать сервисный файл systemd:
 
 ```console
-sudo vim /etc/systemd/system/forms_validation_api.service
+sudo vim /etc/systemd/system/form_validation_api.service
 ```
 
 Заполнить его конфигурацией по шаблону:
@@ -101,14 +101,14 @@ WantedBy=multi-user.target
 Запустить сервис:
 
 ```console
-sudo systemctl daemon-reload; sudo systemctl enable forms_validation_api; sudo systemctl start forms_validation_api;
+sudo systemctl daemon-reload; sudo systemctl enable form_validation_api; sudo systemctl start form_validation_api;
 ```
 
 ### Конфигурация NGINX 
 Создать файл конфигурации в любом текстовом редакторе:
 
 ```console
-sudo vim /etc/nginx/conf.d/forms_validation_api.conf
+sudo vim /etc/nginx/conf.d/form_validation_api.conf
 ```
 
 Добавить в него следующую конфигурацию:
