@@ -58,7 +58,7 @@ def validator(
     data_to_validate: str,
     validation_type: str = None,
     _validation_order: list[str] = validator_types.keys(),
-) -> str | bool:
+) -> str | None:
     if validation_type:
         _validation_order = [validation_type]
 
@@ -69,10 +69,10 @@ def validator(
             return val_type
         except CustomValidationError:
             continue
-    return False
+    return None 
 
 
-def form_fits(recieved_form: dict, form_to_validate_by: dict) -> str | bool:
+def form_fits(recieved_form: dict, form_to_validate_by: dict) -> str | None:
     """Returns a form name if it fits"""
 
     form_fits_result = True
@@ -84,7 +84,7 @@ def form_fits(recieved_form: dict, form_to_validate_by: dict) -> str | bool:
     if form_fits_result:
         return form_to_validate_by["form_name"]
     else:
-        return False
+        return None 
 
 
 def find_types(recieved_form: dict) -> dict:

@@ -21,6 +21,9 @@ def check_types_fit(recieved_form: dict, form_that_fits: dict) -> str | None:
 
 
 def evaluate_form(recieved_form: dict) -> dict | str:
+    """Returns either a name of the form that fits the
+    fields or returns the fields with infered types"""
+
     form_that_fits = find_forms_with_same_fields(recieved_form)
     if form_that_fits:
         form_name = check_types_fit(recieved_form, form_that_fits)

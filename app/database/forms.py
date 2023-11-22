@@ -1,24 +1,25 @@
 forms = [
     {
         "form_name": "Client",
-        "form_fields": ["name", "date registered", "email", "phone number"],
+        "form_fields": ["client name", "date registered", "client email", "phone number"],
     },
     {
         "form_name": "Order", 
-        "form_fields": ["description", "date created", "email"]},
+        "form_fields": ["order description", "date created", "customer email"]},
     {
         "form_name": "Seller",
-        "form_fields": ["name", "phone"]
+        "form_fields": ["seller name", "phone number"]
     },
 ]
 
 
 fields_types = {
-    "name": "text",
+    "client name": "text",
+    "seller name": "text",
+    "order description": "text",
     "date registered": "date",
-    "email": "email",
-    "phone number": "phone",
-    "description": "text",
     "date created": "date",
-    "phone": "phone",
+    "client email": "email",
+    "customer email": "email",
+    "phone number": "phone",
 }
