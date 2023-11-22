@@ -1,9 +1,56 @@
-## Form validation API
+# Form validation API
 
-[http://form-validation-api.fvds.ru/get\_form](http://form-validator-api.fvds.ru/get_form)
+[http://form-validation-api.fvds.ru/get\_form](http://form-validation-api.fvds.ru/get_form)
 
-### Запуск
-#### Вручную локально
+[Подробное техническое задание](technical_task/Тестовое%20задание%20Python%20Junior%20-.pdf)
+
+Сервис принимает POST запрос с данными нейкой формы. Ответом будет либо имя формы, чьи поля и тип совпадают хотя бы с частью полей из присланной формы. Если присланная форма не найдет себе эквивалента в базе данных сервиса, то ответом будет форма с типами на основе правил валидации.  
+
+|Тип данных   | Парвило валидации |
+|------|--------------------------|
+|phone |          +7 xxx xxx xx xx|
+|date  | DD.MM.YYYY или YYYY-MM-DD| 
+
+
+> [!NOTE]
+> Последовательность валидации: date, phone, email, text.
+
+
+
+В настоящий момент сервис ожидает три следующих вида форм:
+
+```python
+# Client
+{
+    "client name": "text",
+    "date registered": "date",
+    "client email": "email",
+    "phone number": "phone"
+}
+
+# Order
+{
+    "order description": "text",
+    "date created": "date",
+    "customer email": "email"
+}
+
+# Seller
+{
+    "seller name": "text",
+    "phone number": "phone"
+}
+```
+
+## Запуск
+
+Клонирование репозитория:
+
+```console
+git clone https://github.com/cyrillus31/form_validation_api.git
+```
+
+### Запуск локально
 Установить все необходимые библиотеки в виртульное окружение (BASH):
 
 ```console
@@ -19,13 +66,14 @@ uvicorn main:app
 После этого сервер развернется на localhost:8000.
 
 Запустить скрипт, который будет отправлять тестовые POST запросы на localhost или на сервер: 
+
 ```console
 python ../tests/test_script.py
 ```
 
-### Запуск на сервере
+## Запуск на сервере
 
-#### Конфигурация systemd сервиса
+### Конфигурация systemd сервиса
 
 Создать сервисный файл systemd:
 
@@ -56,7 +104,7 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload; sudo systemctl enable forms_validation_api; sudo systemctl start forms_validation_api;
 ```
 
-#### Конфигурация NGINX 
+### Конфигурация NGINX 
 Создать файл конфигурации в любом текстовом редакторе:
 
 ```console
