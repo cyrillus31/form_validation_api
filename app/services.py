@@ -1,5 +1,5 @@
 from validation import form_fits, find_types
-from database.db import find_forms_by_fields, add_types
+from database.db import find_forms_by_fields 
 
 
 def find_forms_with_same_fields(recieved_form: dict) -> dict | None:
@@ -9,7 +9,7 @@ def find_forms_with_same_fields(recieved_form: dict) -> dict | None:
     amount_correct_forms = len(forms_that_fit)
     if amount_correct_forms == 0 or amount_correct_forms > 1:
         return None
-    form_that_fits_with_types = add_types(forms_that_fit[0])
+    form_that_fits_with_types = forms_that_fit[0]
     return form_that_fits_with_types
 
 
