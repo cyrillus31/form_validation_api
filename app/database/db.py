@@ -14,7 +14,6 @@ database_exists = os.path.exists(db_path)
 db = TinyDB(db_path)
 
 forms_table = db.table("forms")
-fields_table = db.table("fields")
 
 if not database_exists:
     for form in forms:

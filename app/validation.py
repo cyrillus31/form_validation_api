@@ -56,8 +56,8 @@ validator_types = {
 def validator(
     data_to_validate: str,
     validation_type: str = None,
-    _validation_order: list[str] = validator_types.keys(),
-) -> str | None:
+    _validation_order = validator_types.keys(),
+) -> str:
     if validation_type:
         _validation_order = [validation_type]
 
@@ -68,30 +68,4 @@ def validator(
             return val_type
         except CustomValidationError:
             continue
-    return None 
-
-
-def form_fits(recieved_form: dict, form_to_validate_by: dict) -> str | None:
-    """Returns a form name if it fits"""
-
-    form_fits_result = True
-    for field in form_to_validate_by["form_fields"]:
-        type_to_validate = form_to_validate_by["form_fields"][field]
-        valid = validator(recieved_form[field], type_to_validate)
-        form_fits_result *= bool(valid)
-
-    if form_fits_result:
-        return form_to_validate_by["form_name"]
-    else:
-        return None 
-
-
-def find_types(recieved_form: dict) -> dict:
-    """Returns field names with probable types"""
-
-    result = {}
-    for field in recieved_form:
-        field_content = recieved_form[field]
-        probable_type = validator(field_content)
-        result[field] = probable_type
-    return result
+    return "Unknown"

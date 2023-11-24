@@ -1,1 +1,28 @@
-{"forms": {"1": {"form_name": "Client", "form_fields": {"client name": "text", "date registered": "date", "client email": "email", "phone number": "phone"}}, "2": {"form_name": "Order", "form_fields": {"order description": "text", "date created": "date", "customer email": "email"}}, "3": {"form_name": "Seller", "form_fields": {"seller name": "text", "phone number": "phone"}}}}
+{
+    "forms": {
+        "1": {
+            "form_name": "Client",
+            "form_fields": {
+                "client name": "text",
+                "date registered": "date",
+                "client email": "email",
+                "phone number": "phone"
+            }
+        },
+        "2": {
+            "form_name": "Order",
+            "form_fields": {
+                "order description": "text",
+                "date created": "date",
+                "customer email": "email"
+            }
+        },
+        "3": {
+            "form_name": "Seller",
+            "form_fields": {
+                "seller name": "text",
+                "phone number": "phone"
+            }
+        }
+    }
+}
