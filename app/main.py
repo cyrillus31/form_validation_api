@@ -1,8 +1,6 @@
-from typing import Optional
 import json
-import os
 
-from fastapi import FastAPI, Request, Form
+from fastapi import FastAPI, Request
 
 from services import evaluate_form
 from database.db import db_path
