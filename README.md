@@ -54,7 +54,8 @@ git clone https://github.com/cyrillus31/form_validation_api.git
 Установить все необходимые библиотеки в виртульное окружение (BASH):
 
 ```console
-python -m venv venv; source venv/bin/activate;
+python -m venv venv; 
+source venv/bin/activate;
 pip install -r requirements.txt
 ```
 
