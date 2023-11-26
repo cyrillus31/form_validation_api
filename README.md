@@ -42,6 +42,8 @@
 }
 ```
 
+<br>
+
 ## Запуск
 
 Клонирование репозитория:
@@ -71,6 +73,18 @@ uvicorn main:app
 ```console
 python tests/test_script.py
 ```
+
+
+### Запуск локально в контейнере
+
+```docker
+sudo docker compose up -d
+```
+
+API будет доступен по следующему URL:  
+http://127.0.0.1:8000/
+
+<br>
 
 ## Запуск на сервере
 
