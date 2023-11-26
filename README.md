@@ -52,6 +52,20 @@
 git clone https://github.com/cyrillus31/form_validation_api.git
 ```
 
+<br>
+
+
+### Запуск локально в контейнере
+
+```docker
+sudo docker compose up -d
+```
+
+API будет доступен по следующему URL:  
+http://127.0.0.1:8000/
+
+<br>
+
 ### Запуск локально
 Установить все необходимые библиотеки в виртульное окружение (BASH):
 
@@ -75,14 +89,6 @@ python tests/test_script.py
 ```
 
 
-### Запуск локально в контейнере
-
-```docker
-sudo docker compose up -d
-```
-
-API будет доступен по следующему URL:  
-http://127.0.0.1:8000/
 
 <br>
 
