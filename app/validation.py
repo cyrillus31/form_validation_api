@@ -53,13 +53,10 @@ validator_types = {
 }
 
 
-def validator(
+def get_field_type(
     data_to_validate: str,
-    validation_type: str = None,
     _validation_order = validator_types.keys(),
 ) -> str:
-    if validation_type:
-        _validation_order = [validation_type]
 
     for val_type in _validation_order:
         val_func = validator_types[val_type]
@@ -69,3 +66,13 @@ def validator(
         except CustomValidationError:
             continue
     return "Unknown"
+
+
+def are_same_field_types(recieved_form_typed: dict, db_form: dict) -> bool:
+    for field in db_form:
+        db_type = db_form[field]
+        if not db_type == recieved_form_typed[field]:
+            return False
+    return True
+
+

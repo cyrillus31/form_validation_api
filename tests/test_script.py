@@ -51,6 +51,13 @@ test_data = [
         "customer email": "steve.wozniak@apple.com",
         "motto": "If I had asked my customers what they wanted they would have said a faster horse.",
     },
+    {
+        "client name": "Kirill",
+        "client email": "kirill.com",
+        "phone number": "+7 123 456 78 91",
+        "date registered": "19.04.2023",
+        "sports": "bjj",
+    },
 ]
 
 
