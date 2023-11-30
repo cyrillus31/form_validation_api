@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 
-from database.forms import forms
+from forms import forms
 
 
 client: MongoClient = MongoClient()
