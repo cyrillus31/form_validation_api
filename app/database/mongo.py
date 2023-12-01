@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 
-from forms import forms
+from database.forms import forms
 
 
 client: MongoClient = MongoClient()
@@ -11,9 +11,6 @@ if not amount_forms:
     db.forms.insert_many(forms)
 
 
-def find_forms_by_fields(*args) -> list:
+def find_forms_by_fields(*args) -> list[dict]:
     result = db.forms.find({f"form_fields.{field_name}": {"$exists": "true"} for field_name in args})
-    return result 
-
-r = find_forms_by_fields("seller name", "phone number")
-print([form for form in r])
+    return [form for form in result] 

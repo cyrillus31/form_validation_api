@@ -1,8 +1,16 @@
 version: "3"
 
 services:
+  web:
+    build: .
+    restart: always
+    depends_on:
+      - mongo
+    ports:
+      - "8000:8000"
+
   mongo:
     image: mongo:latest
     restart: always
-    ports:
-      - "27017:27017"
+    expose:
+      - "27017"

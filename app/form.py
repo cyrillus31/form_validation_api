@@ -1,5 +1,5 @@
 from validation import get_field_type, are_same_field_types
-from database.db import find_forms_by_fields
+from database.mongo import find_forms_by_fields
 
 
 class Form:
