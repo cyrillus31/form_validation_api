@@ -1,5 +1,20 @@
 # Form validation API
 
+<div align="left">
+  <img src="https://skillicons.dev/icons?i=py" height="40" alt="python logo"  />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=fastapi" height="40" alt="fastapi logo"  />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=mongodb" height="40" alt="mongodb logo"  />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=docker" height="40" alt="docker logo"  />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=nginx" height="40" alt="nginx logo"  />
+</div>
+
+<br>
+<br>
+
 [http://form-validation-api.fvds.ru/get\_form](http://form-validation-api.fvds.ru/get_form)
 
 [Подробное техническое задание](technical_task/Тестовое%20задание%20Python%20Junior%20-.pdf)
