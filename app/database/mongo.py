@@ -6,8 +6,14 @@ from forms import forms
 client: MongoClient = MongoClient()
 
 db = client["forms"]
+amount_forms = db.forms.count_documents({})
+if not amount_forms:
+    db.forms.insert_many(forms)
 
-result = db.forms.insert_many(forms)
 
-print(result)
+def find_forms_by_fields(*args) -> list:
+    result = db.forms.find({f"form_fields.{field_name}": {"$exists": "true"} for field_name in args})
+    return result 
 
+r = find_forms_by_fields("seller name", "phone number")
+print([form for form in r])
