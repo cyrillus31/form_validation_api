@@ -79,7 +79,7 @@ pip install -r requirements.txt
 
 Поднять MongoDB в контейнере
 ```console
-sudo docker run --expose 27017 --name mongo -d mongo:latest
+sudo docker run -p 27017:27017 --name mongo -d mongo:latest
 ```
 
 Зайти в директорию [app](app/) и выполнить команду:
