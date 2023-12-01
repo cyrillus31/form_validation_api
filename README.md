@@ -64,37 +64,16 @@ sudo docker compose up -d
 ```
 
 API будет доступен по следующему URL:  
-http://127.0.0.1:8000/
+http://127.0.0.1:8000/get_form
 
 <br>
 
-### Запуск локально
-Установить все необходимые библиотеки в виртульное окружение:
-
-```console
-python -m venv venv; 
-source venv/bin/activate;
-pip install -r requirements.txt
-```
-
-Поднять MongoDB в контейнере
-```console
-sudo docker run -p 27017:27017 --name mongo -d mongo:latest
-```
-
-Зайти в директорию [app](app/) и выполнить команду:
-
-```console
-uvicorn main:app
-```
-После этого сервер развернется на localhost:8000.
-
-Запустить скрипт из корня репозитория, который будет отправлять тестовые POST запросы на localhost или на сервер [http://form-validation-api.fvds.ru/get\_form](http://form-validation-api.fvds.ru/get_form): 
+### Скрипт для тестирования работы
+Запустить скрипт из корня репозитория, который, c помощью библиотеки Requests, может отправлять тестовые POST запросы или на localhost, или на сервер [http://form-validation-api.fvds.ru/get\_form](http://form-validation-api.fvds.ru/get_form): 
 
 ```console
 python tests/test_script.py
 ```
-
 
 
 <br>
