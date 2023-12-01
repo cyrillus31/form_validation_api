@@ -71,7 +71,7 @@ def get_field_type(
 def are_same_field_types(recieved_form_typed: dict, db_form: dict) -> bool:
     for field in db_form:
         db_type = db_form[field]
-        if not db_type == recieved_form_typed[field]:
+        if db_type != recieved_form_typed[field]:
             return False
     return True
 

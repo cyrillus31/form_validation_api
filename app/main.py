@@ -1,9 +1,7 @@
-import json
-
 from fastapi import FastAPI, Request
 
 from services import evaluate_form
-from database.db import db_path
+from database.mongo import db 
 
 app = FastAPI()
 
@@ -15,9 +13,8 @@ def index():
 
 @app.get("/get_form")
 async def get_information():
-    with open(db_path) as json_file:
-        json_data = json.load(json_file)
-    return {"message": "POST the form fields to the endpoint", "known forms": json_data}
+    forms_in_database = [form for form in db.forms.find({}, projection={"form_name": 1, "form_fields": 1, "_id": 0})]
+    return {"message": "POST the form fields to the endpoint", "known forms": forms_in_database}
     
 
 @app.post("/get_form")
