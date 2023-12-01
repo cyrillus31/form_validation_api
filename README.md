@@ -80,37 +80,6 @@ python tests/test_script.py
 
 ## Запуск на сервере
 
-### Конфигурация systemd сервиса
-
-Создать сервисный файл systemd:
-
-```console
-sudo vim /etc/systemd/system/form_validation_api.service
-```
-
-Заполнить его конфигурацией по шаблону:
-
-```console
-[Unit]
-Description=My FastAPI App
-After=network.target
-
-[Service]
-User=myuser
-Group=mygroup
-WorkingDirectory=/path/to/app
-ExecStart=/path/to/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-```
-Запустить сервис:
-
-```console
-sudo systemctl daemon-reload; sudo systemctl enable form_validation_api; sudo systemctl start form_validation_api;
-```
-
 ### Конфигурация NGINX 
 Создать файл конфигурации в любом текстовом редакторе:
 
